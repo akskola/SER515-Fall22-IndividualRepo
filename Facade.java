@@ -16,7 +16,8 @@ public class Facade {
 
 	public boolean login() {
 		Login login = new Login();
-		return false;
+		login.getCredentials();
+		return login.validateCredentials();
 	}
 
 	public void addTrading() {
