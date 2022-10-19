@@ -2,8 +2,6 @@ public class OfferingIterator {
 
 	private OfferingList offeringList;
 
-	private OfferingList offeringList;
-
 	public boolean hasNext() {
 		return false;
 	}

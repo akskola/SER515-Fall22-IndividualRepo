@@ -6,6 +6,4 @@ public class OfferingList {
 
 	private OfferingIterator offeringIterator;
 
-	private OfferingIterator offeringIterator;
-
 }
