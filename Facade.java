@@ -10,7 +10,12 @@ public class Facade {
 
 	private Person thePerson;
 
+	public Facade() {
+		System.out.println("Facade Implemented");
+	}
+
 	public boolean login() {
+		Login login = new Login();
 		return false;
 	}
 
