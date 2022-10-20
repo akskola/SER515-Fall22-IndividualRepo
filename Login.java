@@ -1,5 +1,6 @@
 import java.util.Objects;
 import java.util.Scanner;
+import java.io.*;
 
 public class Login {
     int userType;
@@ -8,10 +9,6 @@ public class Login {
 
     public void getCredentials(){
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter the UserType(0 for Buyer, 1 for Seller): ");
-        userType = myObj.nextInt();
-
-        myObj.nextLine(); // To consume the \n character
 
         System.out.println("Enter the UserName: ");
         userName = myObj.nextLine();
@@ -21,18 +18,43 @@ public class Login {
     }
 
     public boolean validateCredentials(){
-        if(userType == 1 && ((userName.equals("pepe")) && password.equals("3333"))){
-            return loginPassed();
-        } else if (userType == 0 && ((userName.equals("tutu")  && password.equals("1111") ) || (userName.equals("mimi") || password.equals("2222") ) || (userName.equals("nana")  || password.equals("3333")))) {
-            return loginPassed();
+        try{
+            FileInputStream file1 = new FileInputStream("textFiles/BuyerInfo.txt");
+            Scanner sc1 = new Scanner(file1);
+            while(sc1.hasNextLine())
+            {
+                String line = sc1.nextLine();
+                String[] arr = line.split(":",2);
+                if(userName.equals(arr[0]) && password.equals(arr[1])){
+                    userType = 0;
+                    System.out.println("\nBuyer Log In Successful");
+                    System.out.println("\n (((( BRIDGE IMPLEMENTED ))))\n");
+                    Buyer buyer = new Buyer();
+                    buyer.showMenu();
+                    return true;
+                }
+            }
+            sc1.close();
+
+            FileInputStream file2 = new FileInputStream("textFiles/SellerInfo.txt");
+            Scanner sc2 = new Scanner(file2);
+            while(sc2.hasNextLine())
+            {
+                String line = sc2.nextLine();
+                String[] arr = line.split(":",2);
+                if(userName.equals(arr[0]) && password.equals(arr[1])){
+                    userType = 1;
+                    System.out.println("Seller Log In Successful");
+                    return true;
+                }
+            }
+            sc2.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
 
         return loginFailed();
-    }
-
-    private boolean loginPassed(){
-        System.out.println("Login Successful");
-        return true;
     }
 
     private boolean loginFailed(){

@@ -11,7 +11,7 @@ public class Facade {
 	private Person thePerson;
 
 	public Facade() {
-		System.out.println("Facade Implemented");
+		System.out.println("\n (((( FACADE IMPLEMENTED ))))\n");
 	}
 
 	public boolean login() {
