@@ -4,6 +4,8 @@ public abstract class ProductMenu {
 
 	public abstract void showMenu();
 
+	public abstract void showItems();
+
 	public abstract void showAddButton();
 
 	public abstract void showViewButton();
