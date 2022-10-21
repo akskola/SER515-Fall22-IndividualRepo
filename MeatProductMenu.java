@@ -9,6 +9,7 @@ public class MeatProductMenu extends ProductMenu {
 		try{
 			FileInputStream file1 = new FileInputStream("textFiles/ProductInfo.txt");
 			Scanner sc1 = new Scanner(file1);
+
 			while(sc1.hasNextLine()) {
 				String line = sc1.nextLine();
 				String[] arr = line.split(":",2);
@@ -16,15 +17,33 @@ public class MeatProductMenu extends ProductMenu {
 					items.add(arr[1]);
 				}
 			}
-			sc1.close();
 
-			for(int i = 0; i < items.size(); i++){
-				System.out.println(i+1 + ") " + items.get(i) + "     ");
-			}
-			System.out.println("\n (((( ITERATOR IMPLEMENTED ))))\n");
+			sc1.close();
+			showItems();
+
+			System.out.println("Select an item to buy: ");
+			Scanner sc2 = new Scanner(System.in);
+			int option = sc2.nextInt();
+
+			System.out.println(items.get(option-1) + " has been added to your bidding list");
+
+			ReminderVisitor visitor = new ReminderVisitor();
+			visitor.visitTrading();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	public void showItems(){
+		ProductIterator iterator = new ProductIterator(items);
+		int i = 1;
+
+		while(iterator.hasNext()){
+			String item = iterator.Next();
+			System.out.println(i + ") " + item);
+			i++;
+		}
+		System.out.println();
 	}
 
 	public void showAddButton() {

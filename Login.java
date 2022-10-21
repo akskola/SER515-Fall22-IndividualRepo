@@ -1,6 +1,5 @@
-import java.util.Objects;
+import java.io.FileInputStream;
 import java.util.Scanner;
-import java.io.*;
 
 public class Login {
     int userType;
@@ -28,9 +27,7 @@ public class Login {
                 if(userName.equals(arr[0]) && password.equals(arr[1])){
                     userType = 0;
                     System.out.println("\nBuyer Log In Successful");
-                    System.out.println("\n (((( BRIDGE IMPLEMENTED ))))\n");
-                    Buyer buyer = new Buyer();
-                    buyer.showMenu();
+                    System.out.println("\n~~~~~ BRIDGE IMPLEMENTED ~~~~~\n");
                     return true;
                 }
             }
@@ -45,6 +42,7 @@ public class Login {
                 if(userName.equals(arr[0]) && password.equals(arr[1])){
                     userType = 1;
                     System.out.println("Seller Log In Successful");
+                    System.out.println("\n~~~~~ BRIDGE IMPLEMENTED ~~~~~\n");
                     return true;
                 }
             }
