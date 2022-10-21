@@ -2,7 +2,7 @@ public abstract class ProductMenu {
 
 	private Person person;
 
-	public abstract void showMenu();
+	public abstract void showMenu(int userType);
 
 	public abstract void showItems();
 
