@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Buyer extends Person {
 	int optionType;
 	int productType;
+	int userType = 0;
 
 	public Buyer(String userName){
 		this.name = userName;
@@ -22,10 +23,10 @@ public class Buyer extends Person {
 				productType = sc.nextInt();
 				if(productType == 1){
 					MeatProductMenu menu1 = new MeatProductMenu();
-					menu1.showMenu();
+					menu1.showMenu(userType);
 				} else if (productType == 2) {
 					ProduceProductMenu menu2 = new ProduceProductMenu();
-					menu2.showMenu();
+					menu2.showMenu(userType);
 				}
 				else {
 					System.out.println("Invalid choice");

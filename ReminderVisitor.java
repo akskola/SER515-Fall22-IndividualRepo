@@ -14,8 +14,9 @@ public class ReminderVisitor extends NodeVisitor {
 		System.out.println("Bidder(s) " + users + " will be notified");
 	}
 
-	public void visitTrading() {
-		System.out.println("Seller will be notified");
+	public void visitTrading(int userType) {
+		String str = userType == 0 ? "Seller" : "Buyers";
+		System.out.println(str + " will be notified");
 	}
 
 	public void visitFacade(Facade facade) {
